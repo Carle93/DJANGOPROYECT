@@ -8,22 +8,24 @@ from django.shortcuts import render, redirect
 def home(request):
     return render(request,"login/home.html")
 
-
+@login_required
 def services(request):
     return render(request,"login/services.html")
 
+def login(request):
+    return render(request,"registration/inicio-sesion.html")
 
-def registro(request):
+def registration(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('inicio_sesion')  # Redirige al inicio de sesión después del registro
+            return redirect('home.html')  # Redirige al inicio de sesión después del registro
     else:
         form = UserCreationForm()
-    return render(request, 'registro.html', {'form': form})
+    return render(request, "registration/registro.html", {'form': form})
 
 @login_required
 def mi_perfil(request):
     # Esta vista está protegida y solo es accesible para usuarios autenticados
-    return render(request, 'mi_perfil.html')
+    return render(request, 'mi-perfil.html')
