@@ -8,7 +8,7 @@ from django.shortcuts import render, redirect
 def home(request):
     return render(request,"login/home.html")
 
-@login_required
+
 def services(request):
     return render(request,"login/services.html")
 
