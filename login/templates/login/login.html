@@ -1,4 +1,15 @@
-<style> form {
+
+
+{% extends "login/base.html" %} 
+
+{% block content %}
+
+<html>
+    <head>
+      
+
+    <style>
+ form {
     
   margin: 0 auto;
   width: 400px;
@@ -49,9 +60,20 @@ textarea {
 
 button {
   margin-left: 0.5em;
-}</style>
-{% block content %}
 
+}
+
+footer{
+  height: 300px;
+  width: 100%;
+  background-color: rgba(0,0,0,0.7);
+             
+}
+   </style>
+
+
+  </head>
+  <body>
 
 <form action="/my-handling-form-page" method="post">
     <ul>
@@ -69,6 +91,11 @@ button {
     </ul>
   </form>
 
-  
+  <footer>
+    <ul> 
+         <li><b> Phone Number:</b> 123456789 </li>
+         <li><b> Email Address:</b> abc@gmail.com </li>
+    </ul>
+</footer>
   {% endblock %}
 
