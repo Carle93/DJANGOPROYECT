@@ -8,8 +8,8 @@ def home(request):
     return render(request,"login/home.html")
 
 
-def services(request):
-    return render(request,"login/services.html")
+def Meditation(request):
+    return render(request,"login/Meditation.html")
 
 def login(request):
     return render(request,"login/login.html")
