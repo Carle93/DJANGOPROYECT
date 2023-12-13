@@ -27,3 +27,22 @@ class Users(models.Model):
         """String for representing the MyModelName object (in Admin site etc.)."""
         return self.username
 
+
+
+class Moods(models.Model):
+    name = models.CharField(max_length=20, help_text='Name to select mood in the App')
+    explanation = models.CharField(max_length=40, help_text='description from the User text your mood in the App')
+
+class Meta:
+    ordering = ['created_on']
+
+    # Methods
+def get_absolute_url(self):
+        """Returns the URL to access a particular instance of MyModelName."""
+        return reverse('model-detail-view', args=[str(self.id)])
+
+def __str__(self):
+        """String for representing the MyModelName object (in Admin site etc.)."""
+        return self.name
+
+
