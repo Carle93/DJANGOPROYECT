@@ -48,5 +48,5 @@ def __str__(self):
 class Test(models.Model):
     name = models.CharField(max_length=50, help_text='Name to test in the App')
     Moods = models.ForeignKey(Moods, null=True, blank=True, on_delete= models.CASCADE)
-
+    #get method foreignkey´s syntax 
 
