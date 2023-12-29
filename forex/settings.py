@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'forex.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME':'Anatha_meditation',
+        'NAME':'',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
