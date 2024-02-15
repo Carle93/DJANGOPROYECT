@@ -47,6 +47,17 @@ def __str__(self):
 
 class Test(models.Model):
     name = models.CharField(max_length=50, help_text='Name to test in the App')
-    Moods = models.ForeignKey(Moods, null=True, blank=True, on_delete= models.CASCADE)
+    moods = models.ForeignKey(Moods, null=True, blank=True, on_delete= models.CASCADE)
     #get method foreignkey´s syntax 
 
+
+class Files(models.Model):
+    frequency_meditation = models.FileField(upload_to='mp3s/', null=True, blank=True)
+    guided_meditation = models.FileField(upload_to='mp3s/', null=True, blank=True)
+    read_relaxation = models.FileField(upload_to='pdfs/')
+    film_relaxation = models.FileField(upload_to='mp4s/', null=True, blank=True)
+    moods = models.ForeignKey(Moods, null=True, blank=True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.id)
+    
