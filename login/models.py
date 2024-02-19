@@ -19,6 +19,7 @@ class Users(models.Model):
     class Meta:
         ordering = ['created_on']
 
+
     # Methods
     def get_absolute_url(self):
         """Returns the URL to access a particular instance of MyModelName."""
