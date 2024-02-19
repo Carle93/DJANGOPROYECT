@@ -12,6 +12,7 @@ class Users(models.Model):
     email = models.EmailField(max_length=100, help_text='Email from the User in the App')
     password = models.CharField(max_length=50, help_text='Password to enter in the App')
     created_on = models.DateTimeField(auto_now_add=True)
+    soft_delete = models.BooleanField(default=False)
     # …
 
     # Metadata
@@ -32,6 +33,7 @@ class Users(models.Model):
 class Moods(models.Model):
     name = models.CharField(max_length=20, help_text='Name to select mood in the App')
     explanation = models.CharField(max_length=40, help_text='description from the User text your mood in the App')
+    soft_delete = models.BooleanField(default=False)
 
 class Meta:
     ordering = ['created_on']
