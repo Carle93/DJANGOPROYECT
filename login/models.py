@@ -55,12 +55,10 @@ class Test(models.Model):
 
 
 class Files(models.Model):
-    frequency_meditation = models.FileField(upload_to='mp3s/', null=True, blank=True)
-    guided_meditation = models.FileField(upload_to='mp3s/', null=True, blank=True)
-    read_relaxation = models.FileField(upload_to='pdfs/')
-    film_relaxation = models.FileField(upload_to='mp4s/', null=True, blank=True)
-    moods = models.ForeignKey(Moods, null=True, blank=True, on_delete=models.CASCADE)
+    location = models.FileField(upload_to='uploads/')
+    type = models.CharField(max_length=50, choices=[('mp3s', 'MP3'), ('mp4s', 'MP4'), ('pdfs', 'PDF')])
+    test = models.ForeignKey(Test, null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
-        return str(self.id)
+        return f"File: {self.location}"
     
