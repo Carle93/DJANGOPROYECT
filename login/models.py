@@ -32,8 +32,18 @@ class Users(models.Model):
 
 
 class Moods(models.Model):
+
+    type_moods = (
+         ("anxiety", "Anxiety"),
+         ("sadness", "Sadness"),
+         ("unmotivated", "Unmotivated"),
+         ("tiredness", "Tiredness"),
+         ("fear", "Fear"),
+    )
+
     name = models.CharField(max_length=20, help_text='Name to select mood in the App')
     explanation = models.CharField(max_length=40, help_text='description from the User text your mood in the App')
+    category_moods= models.CharField(max_length=13, choices= type_moods,null=True, blank=True)
     soft_delete = models.BooleanField(default=False)
 
 class Meta:
@@ -42,23 +52,36 @@ class Meta:
     # Methods
 def get_absolute_url(self):
         """Returns the URL to access a particular instance of MyModelName."""
-        return reverse('model-detail-view', args=[str(self.id)])
+        return reverse('model-detail-view', args=[str(self.name)])
 
 def __str__(self):
         """String for representing the MyModelName object (in Admin site etc.)."""
         return self.name
 
 class Test(models.Model):
+
+    Types_tests=(
+         ("Goldberg EADG", "Test Axiety and Sadness"),
+         ("EEP", "Test Fear, Tiredness, Unmotivated"),
+    )
+
     name = models.CharField(max_length=50, help_text='Name to test in the App')
+    Category_type_Test= models.CharField (max_length=13, choices=Types_tests,null=True, blank=True)
     moods = models.ForeignKey(Moods, null=True, blank=True, on_delete= models.CASCADE)
     #get method foreignkey´s syntax 
 
+    def __str__(self):
+        return self.Category_type_Test
 
 class Files(models.Model):
-    location = models.FileField(upload_to='uploads/')
-    type = models.CharField(max_length=50, choices=[('mp3s', 'MP3'), ('mp4s', 'MP4'), ('pdfs', 'PDF')])
+    Type_choices = [
+        ('mp3', 'MP3'),
+        ('mp4', 'MP4'),
+        ('pdf', 'PDF'),
+    ]
+       
+    location = models.FileField(upload_to='uploads/', null=True, blank=True)
+    type = models.CharField(max_length=50, choices=Type_choices,null=True, blank=True)
     test = models.ForeignKey(Test, null=True, blank=True, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return f"File: {self.location}"
-    
+
