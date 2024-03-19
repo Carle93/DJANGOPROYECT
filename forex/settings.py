@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'forex.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysqlclient',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME':'data_anatha',
         'USER': 'root',
         'PASSWORD': 'Cn22206922//',

@@ -32,18 +32,8 @@ class Users(models.Model):
 
 
 class Moods(models.Model):
-
-    type_moods = (
-         ("anxiety", "Anxiety"),
-         ("sadness", "Sadness"),
-         ("unmotivated", "Unmotivated"),
-         ("tiredness", "Tiredness"),
-         ("fear", "Fear"),
-    )
-
     name = models.CharField(max_length=20, help_text='Name to select mood in the App')
     explanation = models.CharField(max_length=40, help_text='description from the User text your mood in the App')
-    category_moods= models.CharField(max_length=13, choices= type_moods,null=True, blank=True)
     soft_delete = models.BooleanField(default=False)
 
 class Meta:
@@ -59,19 +49,12 @@ def __str__(self):
         return self.name
 
 class Test(models.Model):
-
-    Types_tests=(
-         ("Goldberg EADG", "Test Axiety and Sadness"),
-         ("EEP", "Test Fear, Tiredness, Unmotivated"),
-    )
-
     name = models.CharField(max_length=50, help_text='Name to test in the App')
-    Category_type_Test= models.CharField (max_length=13, choices=Types_tests,null=True, blank=True)
     moods = models.ForeignKey(Moods, null=True, blank=True, on_delete= models.CASCADE)
     #get method foreignkey´s syntax 
 
     def __str__(self):
-        return self.Category_type_Test
+        return self.name
 
 class Files(models.Model):
     Type_choices = [
