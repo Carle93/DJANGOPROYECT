@@ -33,7 +33,7 @@ class Users(models.Model):
 
 class Moods(models.Model):
     name = models.CharField(max_length=20, help_text='Name to select mood in the App')
-    explanation = models.CharField(max_length=40, help_text='description from the User text your mood in the App')
+    explanation = models.CharField(max_length=50, help_text='description from the User text your mood in the App')
     soft_delete = models.BooleanField(default=False)
 
 class Meta:
