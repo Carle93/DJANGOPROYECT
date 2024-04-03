@@ -1,0 +1,29 @@
+
+
+{% extends "login/base.html" %} 
+
+{% block content %}{% endblock %}
+<html>
+
+
+  <body>
+
+    <form action="/my-handling-form-page" method="post">
+        <ul>
+          <li>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="user_name" required />
+          </li>
+          <li>
+            <label for="mail">Email:</label>
+            <input type="email" id="mail" name="user_mail" required />
+          </li>
+          <li class="button">
+            <button type="submit">Send</button>
+          </li>
+        </ul>
+      </form>
+    
+</html>
+ 
+

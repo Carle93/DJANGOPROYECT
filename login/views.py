@@ -11,8 +11,8 @@ def home(request):
 def Meditation(request):
     return render(request,"login/Meditation.html")
 
-def login(request):
-    return render(request,"login/login.html")
+def perfil(request):
+    return render(request,"login/perfil.html")
 
 
 
