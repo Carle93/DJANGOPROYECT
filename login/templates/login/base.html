@@ -15,6 +15,15 @@
         <a class="navbar-item">
           <img src="{% static 'imagen/LogoA.png' %}" alt="site logo" style="max-height: 180px;" class="py-2 px-2">
         </a>
+
+        <a class= "navbar-burger" id= "burger" >
+            <span> </span>
+            <span> </span>
+            <span> </span>
+
+        </a>
+        <script type="toggle/javascript" src="{% static 'javascript/index.js' %}"></script>
+
     </div>
     
     <div class="navbar-menu" id="nav-link">
@@ -25,14 +34,15 @@
         </div>
     </div>
 </nav>
+
 <main>
   
-  
+    {% block content %}{% endblock %}
 </main>
 <footer class="footer is-white"> 
   <div class="content has-text-centered">
       <p>
-          <strong>Anahata</strong> by Jeremy Thomas.
+          <strong>Anahata</strong> by CN Hernandez.
       </p>
       <p>Derechos de autor © 2024</p>
   </div>
