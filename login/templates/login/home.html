@@ -1,10 +1,44 @@
 {% extends "login/base.html" %} 
 {% load static %}
 {% block content %}
-    <h1 class="is-size-1 has-tex-centered has-tex-primary-dark">How do you Feel?</h1>
-    <img src={% static 'imagen/cuarzos.jpg' size="550*550" %} alt="cristal">
-    <br>
+     
+<h1 class="is-size-1 has-text-centered has-text-green has-text-weight-bold">What has you like this?</h1>
+
     <section class="section">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt fugit soluta corporis voluptates sequi. Sunt eligendi mollitia a praesentium accusamus dignissimos, tempora pariatur similique, excepturi quae ipsa repudiandae blanditiis perspiciatis.</p>
-    </section>
+        <div class="container">
+          <div class="columns">
+            
+            <!-- firts columns -->
+            <div class="column is-3 has-text-centered">
+                <div class="box">
+                <img src={% static 'imagen/cuarzos.jpg' size="550*550" %} alt="cristal">
+                <h2 class="is-size-2 title">Anxiety</h2>
+                <p>Description of anxiety</p>
+                <button class="button is-text">Clic</button>
+              </div>
+            </div>
+            
+            <!-- Second columns -->
+            <div class="column is-4 has-text-centered">
+              <div class="box">
+                <img src={% static 'imagen/cuarzos.jpg' size="550*550" %} alt="cristal">
+                <h2 class="is-size-2 title">Tired</h2>
+                <p>Description of tiredness</p>
+                <button class="button is-text">Clic</button>
+              </div>
+            </div>
+            
+            <!-- Third columns -->
+            <div class="column is-3 has-text-centered">
+              <div class="box">
+                <img src={% static 'imagen/cuarzos.jpg' size="550*550" %} alt="cristal">
+                <h2 class="is-size-2 title">Sadness</h2>
+                <p>Description of sadness</p>
+                <button class="button is-text">Clic</button>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </section>
 {% endblock %}

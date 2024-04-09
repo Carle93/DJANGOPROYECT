@@ -36,16 +36,7 @@ class Moods(models.Model):
     explanation = models.CharField(max_length=50, help_text='description from the User text your mood in the App')
     soft_delete = models.BooleanField(default=False)
 
-class Meta:
-    ordering = ['created_on']
-
-    # Methods
-def get_absolute_url(self):
-        """Returns the URL to access a particular instance of MyModelName."""
-        return reverse('model-detail-view', args=[str(self.name)])
-
-def __str__(self):
-        """String for representing the MyModelName object (in Admin site etc.)."""
+    def __str__(self):
         return self.name
 
 class Test(models.Model):
