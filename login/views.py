@@ -1,11 +1,13 @@
 from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
+from .models import Moods
 
 
 # Create your views here.
 def home(request):
     return render(request,"login/home.html")
+   
 
 
 def Meditation(request):
