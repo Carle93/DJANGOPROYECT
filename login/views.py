@@ -13,10 +13,11 @@ def home(request):
 def Meditation(request):
     return render(request,"login/Meditation.html")
 
-def perfil(request):
-    return render(request,"login/perfil.html")
+def user_account(request):
+    return render(request,"login/user_account.html")
 
-
+def Test(request):
+    return render(request,"login/test.html")
 
 
 

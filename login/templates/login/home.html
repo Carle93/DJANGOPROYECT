@@ -1,44 +1,51 @@
 {% extends "login/base.html" %} 
 {% load static %}
 {% block content %}
-     
-<h1 class="is-size-1 has-text-centered has-text-green has-text-weight-bold">What has got you like this?</h1>
+ 
+<h1 class="is-size-2 has-text-centered has-text-green has-text-weight-bold">What has got you like this?</h1>
 
-    <section class="section">
-        <div class="container">
-          <div class="columns">
-            
-            <!-- firts columns -->
-            <div class="column is-3 has-text-centered">
-                <div class="box">
-                <img src={% static 'imagen/cuarzos.jpg' size="550*550" %} alt="cristal">
-                <h2 class="is-size-2 title">Anxiety</h2>
-                <p>Description of anxiety</p>
-                <button class="button is-text">Clic</button>
-              </div>
-            </div>
-            
-            <!-- Second columns -->
-            <div class="column is-4 has-text-centered">
-              <div class="box">
-                <img src={% static 'imagen/cuarzos.jpg' size="550*550" %} alt="cristal">
-                <h2 class="is-size-2 title">Tired</h2>
-                <p>Description of tiredness</p>
-                <button class="button is-text">Clic</button>
-              </div>
-            </div>
-            
-            <!-- Third columns -->
-            <div class="column is-3 has-text-centered">
-              <div class="box">
-                <img src={% static 'imagen/cuarzos.jpg' size="550*550" %} alt="cristal">
-                <h2 class="is-size-2 title">Sadness</h2>
-                <p>Description of sadness</p>
-                <button class="button is-text">Clic</button>
-              </div>
-            </div>
-            
-          </div>
+<section class="section">
+  <div class="container">
+    <div class="columns is-multiline is-centered">
+
+      <!-- Firt column -->
+      <div class="column is-3 has-text-centered">
+        <div class="box">
+          <img src="{% static 'imagen/cuarzos.jpg' %}" alt="cristal" width="550" height="550">
+          <h3 class="is-size-4 title">Anxiety</h3>
+          <p>Description of anxiety</p>
+          <button class="button is-text">Clic</button>
         </div>
-      </section>
+      </div>
+
+      <!-- Second column -->
+      <div class="column is-4 has-text-centered">
+        <div class="box">
+          <img src="{% static 'imagen/cuarzos.jpg' %}" alt="cristal" width="550" height="550">
+          <h3 class="is-size-4 title">Tired</h3>
+          <p>Description of tiredness</p>
+          <button class="button is-text">Clic</button>
+        </div>
+      </div>
+
+      <!-- Third column -->
+      <div class="column is-3 has-text-centered">
+        <div class="box">
+          <img src="{% static 'imagen/cuarzos.jpg' %}" alt="cristal" width="550" height="550">
+          <h3 class="is-size-4 title">Sadness</h3>
+          <p>Description of sadness</p>
+          <button class="button is-text">Clic</button>
+        </div>
+      </div>
+
+      <!-- Fourth columna -->
+      <div class="column is-12 has-text-centered">
+        <div class="box">
+          <h3 class="is-size-3 title">None of the last</h3>
+          <button class="button is-text">Clic</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock %}
