@@ -58,4 +58,6 @@ class Files(models.Model):
     type = models.CharField(max_length=50, choices=Type_choices,null=True, blank=True)
     test = models.ForeignKey(Test, null=True, blank=True, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.type
 

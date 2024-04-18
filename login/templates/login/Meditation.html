@@ -3,7 +3,53 @@
 {% load static %}
 {% block content %}
 
- <h1 class="is-size-1 has-tex-centered"></h1>
+<h1 class="title is-size-2 has-text-green has-text-centered has-text-weight-bold" style="margin-bottom: 20px;"> Suggested for You </h1>
+<section class="section">
+    <div class="container">
+      <div class="columns is-multiline is-centered">
+        <!-- Box column -->
+        <div class="column is-6">
+          <div class="box" style="max-width: 300px;">
+            <p class="is-italic is-size-6">The only lasting relationship we have in our entire life is with ourselves. Don't forget, you'll be your companion for life, so make sure you like who you're with." - Diane Von Furstenberg</p>
+          </div>
+        </div>
+        <!-- Hidden advice column -->
+        <div class="column is-6">
+          <div class="box is-hidden">
+            <p class="is-italic is-size-6">Advice goes here...</p>
+          </div>
+        </div>
+        <!-- Crystal columns -->
+        <div class="column is-3 has-text-centered">
+          <div style="max-width: 150px; margin: 0 auto;">
+            <div class="box">
+              <img src="{% static 'imagen/cuarzos.jpg' %}" alt="cristal" width="150" height="150">
+              <h3 class="is-size-5 is-family-sans-serif">Thankfulness</h3>
+              <button class="button is-text">Mp4</button>
+            </div>
+          </div>
+        </div>
+        <div class="column is-3 has-text-centered">
+          <div style="max-width: 150px; margin: 0 auto;">
+            <div class="box ">
+              <img src="{% static 'imagen/cuarzos.jpg' %}" alt="cristal" width="150" height="150">
+              <h3 class="is-size-5 is-family-sans-serif">Self love</h3>
+              <button class="button is-text">PDF</button>
+            </div>
+          </div>
+        </div>
+        <div class="column is-3 has-text-centered">
+          <div style="max-width: 150px; margin: 0 auto;">
+            <div class="box">
+              <img src="{% static 'imagen/cuarzos.jpg' %}" alt="cristal" width="150" height="150">
+              <h3 class="is-size-5 is-family-sans-serif">Calmness</h3>
+              <button class="button is-text">Mp3</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
     
 {% endblock %}
 
