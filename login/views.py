@@ -8,16 +8,14 @@ from .models import Moods
 def home(request):
     return render(request,"login/home.html")
    
+def Test(request):
+    return render(request,"login/test.html")
 
 
 def Meditation(request):
     return render(request,"login/Meditation.html")
 
+
 def user_account(request):
     return render(request,"login/user_account.html")
-
-def Test(request):
-    return render(request,"login/test.html")
-
-
 
