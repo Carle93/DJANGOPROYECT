@@ -4,54 +4,59 @@
  
 <section class="hero is-fullheight">
   <img class= "has-background, is-transparent" src="{% static 'imagen/home.jpg' %}" alt="Descripción de la imagen">
-  <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: flex-start; align-items: center;padding-top: 20%;">
+  <div class="overlay" style="position: absolute; ; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: flex-start; align-items: center;padding-top: 20%;">
     <h1 class="title is-italic is-size-2 has-text-weight-medium has-text-white has-text-centered has-text-weight-bold" style="margin-top: 20px;">What has got you like this?</h1>
   </div>
   </div>
 </section>
 
-<div class="py-6"></div>
+
+<article class="message is-dark">
+  <div class="message-body">
+    The only lasting relationship we have in our entire life is with ourselves. Don't forget, you'll be your companion for life, so make sure you like who you're with." 
+    <strong>Diane Von Furstenberg</strong> 
+  </div>
+</article>
+
 <section class="section">
-  <div class="container">
+  <div class="hero">
     <div class="columns is-multiline is-centered">
 
       <!-- Firt column -->
       <div class="column is-3 has-text-centered">
         <div class="box">
-          <h3 class="is-size-4 title">Anxiety</h3>
-          <p>Description of anxiety</p>
-          <button class="button is-text">Clic</button>
+          <img src="{% static 'imagen/Foto-ansioso.jpeg' %}" alt="ansioso" width="550" height="550">
+          <button class="button is-primary">Anxiety</button>
         </div>
       </div>
 
       <!-- Second column -->
       <div class="column is-4 has-text-centered">
         <div class="box">
-          <img src="{% static 'imagen/cuarzos.jpg' %}" alt="cristal" width="550" height="550">
-          <h3 class="is-size-4 title">Tired</h3>
-          <p>Description of tiredness</p>
-          <button class="button is-text">Clic</button>
+          <img src="{% static 'imagen/Foto-cansado.jpg' %}" alt="cansado" width="500" height="500">
+          <button class="button is-primary">Tired</button>
         </div>
       </div>
 
       <!-- Third column -->
       <div class="column is-3 has-text-centered">
         <div class="box">
-          <img src="{% static 'imagen/cuarzos.jpg' %}" alt="cristal" width="550" height="550">
-          <h3 class="is-size-4 title">Sadness</h3>
-          <p>Description of sadness</p>
-          <button class="button is-text">Clic</button>
+          <img src="{% static 'imagen/Foto-triste.jpg' %}" alt="triste" width="550" height="550">
+          <button class="button is-primary">Sadness</button>
         </div>
       </div>
 
+      
       <!-- Fourth columna -->
-      <div class="column is-12 has-text-centered">
+      <div class="column is-4 has-text-centered">
         <div class="box">
-          <h3 class="is-size-3 title">None of the last</h3>
-          <button class="button is-text">Clic</button>
+          <button class="button is-primary"> None of the last</button>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<div class="py-6"></div>
+
 {% endblock %}
