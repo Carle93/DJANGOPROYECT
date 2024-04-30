@@ -8,12 +8,12 @@ from .models import Moods
 def home(request):
     return render(request,"login/home.html")
    
-def Test(request):
+def test(request):
     return render(request,"login/test.html")
 
 
-def Meditation(request):
-    return render(request,"login/Meditation.html")
+def meditation(request):
+    return render(request,"login/meditation.html")
 
 
 def user_account(request):
