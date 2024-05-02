@@ -22,38 +22,26 @@
 <section class="section">
   <div class="hero">
     <div class="columns is-multiline is-centered">
+      {% for moods in moods %}
 
-      <!-- Firt column -->
+  
       <div class="column is-3 has-text-centered">
         <div class="box">
           <img src="{% static 'imagen/Foto-ansioso.jpeg' %}" alt="ansioso" width="550" height="550">
-          <button class="button is-primary">Anxiety</button>
+          <button class="button is-primary">{{ moods.name }}</button>
+
         </div>
       </div>
-
-      <!-- Second column -->
-      <div class="column is-4 has-text-centered">
-        <div class="box">
-          <img src="{% static 'imagen/Foto-cansado.jpg' %}" alt="cansado" width="500" height="500">
-          <button class="button is-primary">Tired</button>
-        </div>
-      </div>
-
-      <!-- Third column -->
-      <div class="column is-3 has-text-centered">
-        <div class="box">
-          <img src="{% static 'imagen/Foto-triste.jpg' %}" alt="triste" width="550" height="550">
-          <button class="button is-primary">Sadness</button>
-        </div>
-      </div>
-
+      {% endfor%}
+     
+      
     </div>
   </div>
 </section>
 
-<!-- Fourth columna -->
-<div class="button is-left">
-  <button class="button is-primary">Left Aligned Button</button>
+
+<div class="has-text-right" style="margin-top: 20px;"> 
+  <button class="button is-text">None of the last</button>
 </div>
 
 <div class="py-6"></div>

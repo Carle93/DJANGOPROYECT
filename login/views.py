@@ -6,7 +6,9 @@ from .models import Moods
 
 # Create your views here.
 def home(request):
-    return render(request,"login/home.html")
+    moods = Moods.objects.filter(soft_delete=False).order_by('?')[:3]
+    return render(request, 'login/home.html', {'moods': moods})
+   # return render(request,"login/home.html")
    
 def test(request):
     return render(request,"login/test.html")
