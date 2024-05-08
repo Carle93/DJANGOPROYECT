@@ -61,3 +61,15 @@ class Files(models.Model):
     def __str__(self):
         return self.type
 
+
+class Questions(models.Model):
+    test = models.ForeignKey(Test, on_delete=models.CASCADE, related_name='questions')
+    statement = models.CharField(max_length=300)
+    order = models.IntegerField()  # Manually order
+
+    def __str__(self):
+        return f"{self.order}: {self.statement}"
+
+    class Meta:
+        # order by item order
+        ordering = ['order']
