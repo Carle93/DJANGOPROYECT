@@ -73,3 +73,23 @@ class Questions(models.Model):
     class Meta:
         # order by item order
         ordering = ['order']
+
+class Option(models.Model):
+    question_key= models.ForeignKey(Questions, on_delete=models.CASCADE)
+    option= models.CharField(max_length=300)
+
+    def __str__(self):
+        return "self.option"
+
+class Answer(models.Model):
+    quetion = models.ForeignKey(Questions, on_delete=models.CASCADE)
+    option = models.ForeignKey(Option, on_delete=models.CASCADE)
+    user = models.ForeignKey(Users, on_delete=models.CASCADE)  
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user} - {self.quetion} - {self.option}"
+
+
+
+
