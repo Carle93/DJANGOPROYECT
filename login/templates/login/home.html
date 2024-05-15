@@ -21,19 +21,22 @@
 <section class="section">
   <div class="hero">
     <div class="columns is-multiline is-centered">
-      {% for moods in moods %}
+      {% for mood in moods %}
       <div class="column is-3 has-text-centered">
         <div class="box">
-          {% if mood.imagen_url %}
-            <img src="{{ Mood.imagens }}" alt="{{ mood.title }} style="width="550" height="550">
+          {% if mood.imagens_url %}
+            <img src="{{ mood.imagens_url }}" alt="{{ mood.name }}" style="width: 190px; height: 180px;">
           {% else %}
-        <p>No hay imagen disponible</p>
-        {% endif %}
-          <button class="button is-primary">{{ moods.name }}</button>
-
+            <p>No hay imagen disponible</p>
+          {% endif %}
+          <button class="button is-primary">{{ mood.name }}</button>
         </div>
       </div>
-      {% endfor%}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
      
       
     </div>
