@@ -34,6 +34,7 @@ class Users(models.Model):
 class Moods(models.Model):
     name = models.CharField(max_length=20, help_text='Name to select mood in the App')
     explanation = models.CharField(max_length=50, help_text='description from the User text your mood in the App')
+    imagens= models.ImageField(upload_to='imagen/', null=True, blank=True)
     soft_delete = models.BooleanField(default=False)
 
     def __str__(self):
