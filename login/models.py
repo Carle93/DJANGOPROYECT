@@ -80,7 +80,7 @@ class Option(models.Model):
     option= models.CharField(max_length=300)
 
     def __str__(self):
-        return "self.option"
+        return f"{self.option}"
 
 class Answer(models.Model):
     quetion = models.ForeignKey(Questions, on_delete=models.CASCADE)
