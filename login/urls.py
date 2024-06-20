@@ -22,10 +22,10 @@ from . import views
 
 urlpatterns = [
     path("", views.home, name='home'),
-    path("test/", views.test, name='test'),
+    path("mood/", views.mood, name='mood'),
+    path("test/", views.test_view, name='test'),
+    path("test/<int:pk>/", views.test_view, name='test_detail'),  # Ajusta esta línea
     path("meditation/", views.meditation, name='meditation'),
     path("user/", views.user_account, name='login'),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     

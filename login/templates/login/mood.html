@@ -1,0 +1,50 @@
+{% extends "login/base.html" %}
+{% load static %}
+{% block content %}
+
+<section class="hero is-fullheight">
+  <img class="has-background is-transparent" src="{% static 'imagen/home.jpg' %}" alt="places" style="width: 100%; max-height: 450px;">
+  <h1 class="title is-italic is-size-2 has-text-weight-medium has-text-black has-text-centered has-text-weight-bold">HOW DO YOU FEEL TODAY?</h1>
+</section>
+
+<div class="py-4"></div>
+
+<article class="message">
+  <div class="message-body">
+    The only lasting relationship we have in our entire life is with ourselves. Don't forget, you'll be your companion for life, so make sure you like who you're with."
+    <strong>Diane Von Furstenberg</strong>
+  </div>
+</article>
+
+<section class="section">
+  <div class="hero">
+    <div class="columns is-multiline is-centered">
+      {% for mood in moods %}
+      <div class="column is-3 has-text-centered">
+        <div class="box">
+          {% if mood.imagens_url %}
+            <img src="{{ mood.imagens_url }}" alt="{{ mood.name }}" style="width: 190px; height: 180px;">
+          {% else %}
+            <p>No hay imagen disponible</p>
+          {% endif %}
+          {% with test=mood.test_set.first %}
+            {% if test %}
+              <a href="{% url 'test_detail' test.pk %}" class="button is-primary">{{ mood.name }}</a>
+            {% else %}
+              <p>No hay test disponible</p>
+            {% endif %}
+          {% endwith %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<div class="has-text-centered" style="margin-top: 20px;">
+  <button class="button has-text-centered is-primary">None of the last</button>
+</div>
+<a href="{% url 'test' %}">Ir a Test</a>
+<div class="py-6"></div>
+
+{% endblock %}

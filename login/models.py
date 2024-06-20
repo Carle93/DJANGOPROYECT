@@ -42,12 +42,14 @@ class Moods(models.Model):
 
 class Test(models.Model):
     name = models.CharField(max_length=50, help_text='Name to test in the App')
-    moods = models.ForeignKey(Moods, null=True, blank=True, on_delete= models.CASCADE)
-    #get method foreignkey´s syntax 
+    mood = models.ForeignKey(Moods, null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('test_detail', kwargs={'pk': self.pk})
+    
 class Files(models.Model):
     Type_choices = [
         ('mp3', 'MP3'),
