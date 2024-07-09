@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Count
-from .models import Moods, Test
+from .models import Moods, Test, Questions
 
 
 # Create your views here.
@@ -17,14 +17,15 @@ def mood(request):
     for mood in moods:
         mood.imagens_url = mood.imagens.url if mood.imagens else None
 
-    return render(request, 'login/mood.html', {'moods': moods})
+    return render(request, 'login/mood.html', {'mood': moods})
 
-def test_view(request, pk=None):
-    if pk:
-        test = get_object_or_404(Test, pk=pk)
-        return render(request, 'login/test.html', {'test': test})
+def test_view(request, id=None):
+    if id:
+        test = get_object_or_404(Test, pk=id)
+        related_questions = test.questions.order_by('order')
+        context = {'test': test, 'related_questions': related_questions}
+        return render(request, 'login/test.html', context)
     else:
-        # Maneja el caso en que no se proporciona un pk
         return render(request, 'login/test.html')
     
 def meditation(request):
