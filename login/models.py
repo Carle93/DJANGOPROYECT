@@ -78,11 +78,15 @@ class Questions(models.Model):
         ordering = ['order']
 
 class Option(models.Model):
-    question_key= models.ForeignKey(Questions, on_delete=models.CASCADE)
-    option= models.CharField(max_length=300)
+    question_key = models.ForeignKey(Questions, on_delete=models.CASCADE)
+    type = models.CharField(max_length=20,)
+    name = models.CharField(max_length=50,)
+    value = models.CharField(max_length=100,)
+    description = models.CharField(max_length=100,)
 
     def __str__(self):
-        return f"{self.option}"
+        return f"{self.description}"
+    
 
 class Answer(models.Model):
     quetion = models.ForeignKey(Questions, on_delete=models.CASCADE)
