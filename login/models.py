@@ -78,15 +78,18 @@ class Questions(models.Model):
         ordering = ['order']
 
 class Option(models.Model):
-    question_key = models.ForeignKey(Questions, on_delete=models.CASCADE)
+    question_key = models.ForeignKey(Questions, on_delete=models.CASCADE, related_name='options')
     type = models.CharField(max_length=20,)
     name = models.CharField(max_length=50,)
     value = models.CharField(max_length=100,)
     description = models.CharField(max_length=100,)
+    order = models.IntegerField(default=0)  # Puedes usar este campo para ordenar las opciones
 
     def __str__(self):
         return f"{self.description}"
-    
+
+    class Meta:
+        ordering = ['order']
 
 class Answer(models.Model):
     quetion = models.ForeignKey(Questions, on_delete=models.CASCADE)
