@@ -10,44 +10,28 @@
 </section>
 
 </div>
-
 {% if test %}
   <h5 class="title is-size-3 has-text-dark has-text-centered has-text-weight-bold">{{ test.name }}</h5>
   <div class="py-4"></div>
   
   {% for question in related_questions %}
-    <div class="question-block">
+  <div class="question-block">
       <p class="is-size-6 has-text-centered is-family-sans-serif">{{ question.statement }}</p>
       <div class="py-3"></div>
       <div style="max-width: 600px; margin: 0 auto;">
-        <div class="section has-text-centered">
-          <div class="select is-link">
-            <select>
-              <option value="1">1 - Not at all</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10 - Extremely</option>
-            </select>
+          <div class="section has-text-centered">
+              {% for option in question.ordered_options %}
+                  <div>
+                      <input type="radio" id="option_{{ option.id }}" name="question_{{ question.id }}" value="{{ option.value }}">
+                      <label for="option_{{ option.id }}">{{ option.name }}</label><br>
+                  </div>
+              {% endfor %}
           </div>
-        </div>
       </div>
-    </div>
-    <div class="py-3"></div>
-  {% endfor %}
-  
-  <div style="text-align: center; margin-top: 20px;">
-    <button class="button is-primary">Back</button>
-    <button class="button is-primary">Next</button>
   </div>
+  <div class="py-3"></div>
+  {% endfor %}
 {% else %}
   <p>No test found.</p>
 {% endif %}
-
-    
 {% endblock %}

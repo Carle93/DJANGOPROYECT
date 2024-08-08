@@ -23,7 +23,15 @@ def test_view(request, id=None):
     if id:
         test = get_object_or_404(Test, pk=id)
         related_questions = test.questions.order_by('order')
-        context = {'test': test, 'related_questions': related_questions}
+        
+        # Ordena las opciones para cada pregunta
+        for question in related_questions:
+            question.ordered_options = question.options.order_by('order')  # Asigna las opciones ordenadas a un atributo
+
+        context = {
+            'test': test,
+            'related_questions': related_questions
+        }
         return render(request, 'login/test.html', context)
     else:
         return render(request, 'login/test.html')
