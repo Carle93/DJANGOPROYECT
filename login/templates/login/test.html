@@ -1,37 +1,85 @@
 
-{% extends "login/base.html" %} 
+{% extends "login/base.html" %}
 {% load static %}
 {% block content %}
 
 <section class="hero is-fullheight">
-  <img class= "has-background, is-transparent" src="{% static 'imagen/foto-test.jpg' %}" alt="meditationgirl" style="width: 100%; max-height: 450px;">
-    <h1 class="title is-italic is-size-2 has-text-weight-medium has-text-black has-text-centered has-text-weight-bold">THE ONLY YOU´LL NEED</h1>
-    <H2 class=" subtitle is-italic is-size-4 has-text-weight-small has-text-dark has-text-centered has-text-weight-bold" style="margin-top: 6px;"> Select Only for You!</H2>
+  <img class="has-background, is-transparent" src="{% static 'imagen/foto-test.jpg' %}" alt="meditationgirl" style="width: 100%; max-height: 450px;">
+  <h1 class="title is-italic is-size-2 has-text-weight-medium has-text-black has-text-centered has-text-weight-bold">THE ONLY YOU´LL NEED</h1>
+  <H2 class=" subtitle is-italic is-size-4 has-text-weight-small has-text-dark has-text-centered has-text-weight-bold" style="margin-top: 6px;">Select Only for You!</H2>
 </section>
 
-</div>
 {% if test %}
   <h5 class="title is-size-3 has-text-dark has-text-centered has-text-weight-bold">{{ test.name }}</h5>
   <div class="py-4"></div>
   
-  {% for question in related_questions %}
-  <div class="question-block">
-      <p class="is-size-6 has-text-centered is-family-sans-serif">{{ question.statement }}</p>
-      <div class="py-3"></div>
-      <div style="max-width: 600px; margin: 0 auto;">
-          <div class="section has-text-centered">
-              {% for option in question.ordered_options %}
-                  <div>
-                      <input type="radio" id="option_{{ option.id }}" name="question_{{ question.id }}" value="{{ option.value }}">
-                      <label for="option_{{ option.id }}">{{ option.name }}</label><br>
-                  </div>
-              {% endfor %}
+  <div id="questions-container">
+      {% for question in related_questions %}
+      <div class="question-block" id="question-{{ forloop.counter0 }}" style="display: none;"> <!-- Usamos display:none para esconder todas menos la primera -->
+          <p class="is-size-6 has-text-centered is-family-sans-serif">{{ question.statement }}</p>
+          <div class="py-3"></div>
+          <div style="max-width: 600px; margin: 0 auto;">
+              <div class="section has-text-centered">
+                  {% for option in question.ordered_options %}
+                      <div>
+                          <input type="radio" id="option_{{ option.id }}" name="question_{{ question.id }}" value="{{ option.value }}">
+                          <label for="option_{{ option.id }}">{{ option.name }}</label><br>
+                      </div>
+                  {% endfor %}
+              </div>
           </div>
       </div>
+      {% endfor %}
   </div>
-  <div class="py-3"></div>
-  {% endfor %}
+
+  <!-- Botones de navegación -->
+  <div class="navigation-buttons has-text-centered">
+      <button class="button is-primary" id="prev-button" disabled>Previous</button>
+      <button class="button is-primary" id="next-button">Next</button>
+  </div>
 {% else %}
   <p>No test found.</p>
 {% endif %}
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      const questions = document.querySelectorAll('.question-block');
+      let currentQuestionIndex = 0;
+
+      const prevButton = document.getElementById('prev-button');
+      const nextButton = document.getElementById('next-button');
+
+      // Mostrar la pregunta actual
+      function showQuestion(index) {
+          // Ocultar todas las preguntas
+          questions.forEach((question, idx) => {
+              question.style.display = idx === index ? 'block' : 'none';
+          });
+
+          // Habilitar/deshabilitar botones
+          prevButton.disabled = index === 0;
+          nextButton.disabled = index === questions.length - 1;
+      }
+
+      // Mostrar la primera pregunta al cargar la página
+      showQuestion(currentQuestionIndex);
+
+      // Función para avanzar a la siguiente pregunta
+      nextButton.addEventListener('click', () => {
+          if (currentQuestionIndex < questions.length - 1) {
+              currentQuestionIndex++;
+              showQuestion(currentQuestionIndex);
+          }
+      });
+
+      // Función para regresar a la pregunta anterior
+      prevButton.addEventListener('click', () => {
+          if (currentQuestionIndex > 0) {
+              currentQuestionIndex--;
+              showQuestion(currentQuestionIndex);
+          }
+      });
+  });
+</script>
+
 {% endblock %}
