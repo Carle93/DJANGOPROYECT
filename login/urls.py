@@ -25,7 +25,8 @@ urlpatterns = [
     path("mood/", views.mood, name='mood'),
     path("test/", views.test_view, name='test'),
     path("test/<int:id>/", views.test_view, name='test_detail'),  # Ajusta esta línea
+    path('submit-answers/', views.submit_answers, name='submit_answers'),
     path("meditation/", views.meditation, name='meditation'),
-    path("user/", views.user_account, name='login'),
+    path("profile/", views.profile, name='login'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     
