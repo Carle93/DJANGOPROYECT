@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Count
-from .models import Moods, Test, Questions, Answer,Option,Profile
+from django.contrib.auth import login
+from .models import Moods, Test, Questions, Answer,Option,Profile, User
 
 
 # Create your views here.
@@ -39,7 +40,7 @@ def test_view(request, id=None):
 def submit_answers(request):
    
     if request.method == 'POST':
-        user = get_object_or_404(Profile, pk=206)
+        user = get_object_or_404(Profile, pk=id)
         #user = request.user
 
 
@@ -66,8 +67,18 @@ def submit_answers(request):
 def meditation(request):
     return render(request,"login/meditation.html")
 
-
 def profile(request):
-    return render(request,"login/profile.html")
+    return render(request, "login/profile.html")
 
- 
+def register(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()  # Guarda el usuario en la base de datos
+            Profile.objects.create(user=user)  # Crea el perfil automáticamente
+            login(request, user)  # Inicia sesión automáticamente
+            return redirect("home")  # Redirige a la página principal
+    else:
+        form = UserCreationForm()
+
+    return render(request, "login/register.html", {"form": form})

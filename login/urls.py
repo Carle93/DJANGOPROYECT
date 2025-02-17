@@ -27,6 +27,8 @@ urlpatterns = [
     path("test/<int:id>/", views.test_view, name='test_detail'),  # Ajusta esta línea
     path('submit-answers/', views.submit_answers, name='submit_answers'),
     path("meditation/", views.meditation, name='meditation'),
-    path("profile/", views.profile, name='login'),
+    path("profile/", views.profile, name="profile"),  # Vista del perfil
+    path("register/", views.register, name="register"),  # Vista de registro
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     

@@ -107,8 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-#to add new line codigo to say dganjo to use
-#AUTH_USER_MODEL = 'login.Users'
+
 
 
 # Internationalization

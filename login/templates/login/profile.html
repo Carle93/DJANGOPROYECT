@@ -1,50 +1,28 @@
 
-
-{% extends "login/base.html" %} 
+{% extends "login/base.html" %}
 
 {% block content %}
-
-  <div class="py-4"></div>
-
+<div class="py-4"></div>
 
 <div class="container has-text-centered"> 
     <div class="columns is-centered"> 
         <div class="column is-one-quarter"> 
-            
-            <div class="field">
-                <p class="control has-icons-left has-icons-right">
-                    <input class="input" type="email" placeholder="Email">
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-envelope"></i>
-                    </span>
-                    <span class="icon is-small is-right">
-                        <i class="fas fa-check"></i>
-                    </span>
-                </p>
-            </div>
 
-            
-            <div class="field">
-                <p class="control has-icons-left">
-                    <input class="input" type="password" placeholder="Password">
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-lock"></i>
-                    </span>
-                </p>
-            </div>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}  <!-- Renderiza el formulario de Django -->
 
-            
-            <div class="field">
-                <p class="control">
-                    <button class="button is-success">Login</button>
-                </p>
-            </div>
+                <div class="field">
+                    <p class="control">
+                        <button class="button is-success" type="submit">Registrarse</button>
+                    </p>
+                </div>
+            </form>
+
         </div>
     </div> 
 </div> 
-
-
-
 {% endblock %}
+
 
 
