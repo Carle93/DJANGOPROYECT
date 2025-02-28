@@ -2,27 +2,70 @@
 {% extends "login/base.html" %}
 
 {% block content %}
-<div class="py-4"></div>
 
-<div class="container has-text-centered"> 
+  <div class="py-4"></div>
+
+  <div class="container has-text-centered"> 
     <div class="columns is-centered"> 
-        <div class="column is-one-quarter"> 
+      <div class="column is-one-quarter"> 
+        <form method="post">
+          {% csrf_token %}  <!-- 🔐 CSRF Token obligatorio -->
 
-            <form method="POST">
-                {% csrf_token %}
-                {{ form.as_p }}  <!-- Renderiza el formulario de Django -->
+          <!-- Mostrar errores del formulario -->
+          {% if form.errors %}
+            <div class="notification is-danger">
+              <ul>
+                {% for field in form %}
+                  {% for error in field.errors %}
+                    <li>{{ error }}</li>
+                  {% endfor %}
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
 
-                <div class="field">
-                    <p class="control">
-                        <button class="button is-success" type="submit">Registrarse</button>
-                    </p>
-                </div>
-            </form>
+          <!-- Campo de Email -->
+          <div class="field">
+            <p class="control has-icons-left has-icons-right">
+              <input class="input" type="email" name="email" placeholder="Email" required>
+              <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+              </span>
+              <span class="icon is-small is-right">
+                <i class="fas fa-check"></i>
+              </span>
+            </p>
+          </div>
 
-        </div>
+          <!-- Campo de Contraseña -->
+          <div class="field">
+            <p class="control has-icons-left">
+              <input class="input" type="password" name="password1" placeholder="Password" required>
+              <span class="icon is-small is-left">
+                <i class="fas fa-lock"></i>
+              </span>
+            </p>
+          </div>
+
+          <!-- Confirmar Contraseña -->
+          <div class="field">
+            <p class="control has-icons-left">
+              <input class="input" type="password" name="password2" placeholder="Confirm Password" required>
+              <span class="icon is-small is-left">
+                <i class="fas fa-lock"></i>
+              </span>
+            </p>
+          </div>
+
+          <!-- Botón de Envío -->
+          <div class="field">
+            <p class="control">
+              <button class="button is-success" type="submit">Registrarse</button>
+            </p>
+          </div>
+        </form>
+      </div>
     </div> 
-</div> 
+  </div> 
+
 {% endblock %}
-
-
-

@@ -3,13 +3,13 @@ from django.urls import reverse
 from django.contrib.auth.models import User   
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(max_length=500, blank=True)
     avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
-    date_of_birth = models.DateField(null=True, blank=True)
+    #date_of_birth = models.DateField(null=True, blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
-    soft_delete = models.BooleanField(default=False)
-    role = models.CharField(max_length=20, choices=[('client', 'Cliente'), ('admin', 'Administrador')], default='client')
+    #soft_delete = models.BooleanField(default=False)
+    #role = models.CharField(max_length=20, choices=[('client', 'Cliente'), ('admin', 'Administrador')], default='client')
 
     def __str__(self):
         return f"Profile for {self.user.username}"

@@ -1,10 +1,10 @@
 from django.shortcuts import render
-from django.contrib.auth.forms import UserCreationForm
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect
 from django.db.models import Count
 from django.contrib.auth import login
-from .models import Moods, Test, Questions, Answer,Option,Profile, User
-
+from .models import Moods, Test, Questions, Answer,Option,Profile
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
 
@@ -74,9 +74,11 @@ def register(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save()  # Guarda el usuario en la base de datos
-            Profile.objects.create(user=user)  # Crea el perfil automáticamente
-            login(request, user)  # Inicia sesión automáticamente
+            user=form.save()  # Guarda el usuario en la base de datos
+            print("usuario creado exitosamente")
+            Profile.objects.create(user= user)  # Crea el perfil automáticamente
+            print("perfil creado exitosamente")
+            #login(request, user)  # Inicia sesión automáticamente
             return redirect("home")  # Redirige a la página principal
     else:
         form = UserCreationForm()
