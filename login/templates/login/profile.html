@@ -1,4 +1,3 @@
-
 {% extends "login/base.html" %}
 
 {% block content %}
@@ -8,7 +7,7 @@
   <div class="container has-text-centered"> 
     <div class="columns is-centered"> 
       <div class="column is-one-quarter"> 
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
           {% csrf_token %}  <!-- 🔐 CSRF Token obligatorio -->
 
           <!-- Mostrar errores del formulario -->
@@ -24,15 +23,31 @@
             </div>
           {% endif %}
 
-          <!-- Campo de Email -->
+          <!-- Mostrar avatar actual -->
+          <div class="field">
+            <p class="control">
+              {% if user.profile.avatar %}
+                <img src="{{ user.profile.avatar.url }}" alt="Avatar" style="max-width: 100px; max-height: 100px;">
+              {% else %}
+                <p>No tienes un avatar.</p>
+              {% endif %}
+            </p>
+          </div>
+
+          <!-- Subir nuevo avatar -->
+          <div class="field">
+            <label class="label">Actualizar Avatar</label>
+            <p class="control">
+              <input class="input" type="file" name="avatar">
+            </p>
+          </div>
+
+          <!-- Campo de Nombre de Usuario -->
           <div class="field">
             <p class="control has-icons-left has-icons-right">
-              <input class="input" type="email" name="email" placeholder="Email" required>
+              <input class="input" type="text" name="username" value="{{ form.username.value }}" placeholder="Nombre de usuario" required>
               <span class="icon is-small is-left">
-                <i class="fas fa-envelope"></i>
-              </span>
-              <span class="icon is-small is-right">
-                <i class="fas fa-check"></i>
+                <i class="fas fa-user"></i>
               </span>
             </p>
           </div>
@@ -40,32 +55,25 @@
           <!-- Campo de Contraseña -->
           <div class="field">
             <p class="control has-icons-left">
-              <input class="input" type="password" name="password1" placeholder="Password" required>
+              <input class="input" type="password" name="password" placeholder="Contraseña">
               <span class="icon is-small is-left">
                 <i class="fas fa-lock"></i>
               </span>
             </p>
           </div>
 
-          <!-- Confirmar Contraseña -->
-          <div class="field">
-            <p class="control has-icons-left">
-              <input class="input" type="password" name="password2" placeholder="Confirm Password" required>
-              <span class="icon is-small is-left">
-                <i class="fas fa-lock"></i>
-              </span>
-            </p>
-          </div>
-
-          <!-- Botón de Envío -->
+          <!-- Botón de Actualización -->
           <div class="field">
             <p class="control">
-              <button class="button is-success" type="submit">Registrarse</button>
+              <button class="button is-primary is-fullwidth">
+                <strong>Actualizar perfil</strong>
+              </button>
             </p>
           </div>
+
         </form>
       </div>
-    </div> 
-  </div> 
+    </div>
+  </div>
 
 {% endblock %}

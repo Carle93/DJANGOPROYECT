@@ -8,9 +8,8 @@ class Profile(models.Model):
     avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
     #date_of_birth = models.DateField(null=True, blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
-    #soft_delete = models.BooleanField(default=False)
-    #role = models.CharField(max_length=20, choices=[('client', 'Cliente'), ('admin', 'Administrador')], default='client')
-
+    role = models.CharField(max_length=20, choices=[('client', 'Cliente'), ('admin', 'Administrador')], default='client')  # Habilitado el campo role
+    
     def __str__(self):
         return f"Profile for {self.user.username}"
     

@@ -22,8 +22,8 @@
       {% for mood in mood %}
       <div class="column is-3 has-text-centered">
         <div class="box">
-          {% if mood.imagens_url %}
-            <img src="{{ mood.imagens_url }}" alt="{{ mood.name }}" style="width: 190px; height: 180px;">
+          {% if mood.image_url %}
+            <img src="{{ mood.image_url }}" alt="{{ mood.name }}" style="width: 190px; height: 180px;">
           {% else %}
             <p>No hay imagen disponible</p>
           {% endif %}
